@@ -2,12 +2,23 @@ package br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities;
 
 import java.util.UUID;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="tb_professores")
 public class Professor {
 	private final Autorizacao permissao = Autorizacao.PROF;
+	@Column(unique=true, nullable=false)
 	private String cpf;
 	private String nome;
 	private String senha;
 	private String endereco;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	private UUID uuid;
 	public String getNome() {

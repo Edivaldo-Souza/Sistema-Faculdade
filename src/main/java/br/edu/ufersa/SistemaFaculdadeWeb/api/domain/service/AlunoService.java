@@ -16,8 +16,8 @@ public class AlunoService implements ServiceInterface<Aluno>{
 
 	@Override
 	public List<Aluno> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Aluno> alunos = repository.findAll();
+		return alunos;
 	}
 
 	@Override
@@ -28,14 +28,15 @@ public class AlunoService implements ServiceInterface<Aluno>{
 
 	@Override
 	public Aluno create(Aluno obj) {
-		// TODO Auto-generated method stub
-		return null;
+		obj.setUuid(UUID.randomUUID());
+		repository.save(obj);
+		return obj;
 	}
 
 	@Override
 	public Aluno update(Aluno obj) {
-		// TODO Auto-generated method stub
-		return null;
+		repository.save(obj);
+		return obj;
 	}
 
 	@Override
@@ -46,7 +47,6 @@ public class AlunoService implements ServiceInterface<Aluno>{
 
 	@Override
 	public boolean delete(UUID id) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

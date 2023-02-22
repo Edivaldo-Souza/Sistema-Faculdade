@@ -14,7 +14,6 @@ public class Aluno{
 	private final Autorizacao permissao = Autorizacao.ALUNO;
 	@Column(unique=true, nullable=false)
 	private String matricula;
-	@Column(unique=true, nullable=false)
 	private String nome;
 	private String senha;
 	private String endereco;
