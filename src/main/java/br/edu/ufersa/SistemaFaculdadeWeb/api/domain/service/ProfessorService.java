@@ -3,6 +3,7 @@ package br.edu.ufersa.SistemaFaculdadeWeb.api.domain.service;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.Professor;
@@ -10,7 +11,7 @@ import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.repository.ProfessorReposito
 
 @Service
 public class ProfessorService implements ServiceInterface<Professor>{
-	
+	@Autowired
 	ProfessorRepository rep;
 	
 	public List<Professor> getAll() {
