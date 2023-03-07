@@ -10,40 +10,44 @@ import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.repository.ProfessorReposito
 
 @Service
 public class ProfessorService implements ServiceInterface<Professor>{
+	
 	ProfessorRepository rep;
-	@Override
+	
 	public List<Professor> getAll() {
 		List<Professor> profs = rep.findAll();
 		return profs;
 	}	
-	@Override
+	
 	public Professor getAt(UUID id) {
-		// TODO Auto-generated method stub
-		return null;
+		Professor prof = rep.findByUuid(id);
+		return prof;
 	}
 
-	@Override
 	public Professor create(Professor obj) {
 		obj.setUuid(UUID.randomUUID());
 		rep.save(obj);
 		return obj;
 	}
-	@Override
+	
 	public boolean delete(UUID id) {
-		// TODO Auto-generated method stub
+		Professor prof = rep.findByUuid(id);
+		if(prof != null){
+			rep.delete(prof);
+			return true;
+		}
 		return false;
 	}
 
-	@Override
 	public Professor update(Professor obj) {
 		rep.save(obj);
 		return obj;
 	}
 
-	@Override
 	public Professor updatePatch(Professor obj) {
-		// TODO Auto-generated method stub
-		return null;
+		Professor prof = rep.findByCpf(obj.getCpf());
+		obj.setId(prof.getId());
+		obj.setUuid(prof.getUuid());		
+		return rep.save(obj);
 	}
 
 }
