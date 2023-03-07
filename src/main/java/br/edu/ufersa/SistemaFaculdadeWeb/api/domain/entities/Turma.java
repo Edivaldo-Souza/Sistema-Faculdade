@@ -2,22 +2,27 @@ package br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities;
 
 import java.util.UUID;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
 @Entity
 @Table(name="tb_turmas")
 public class Turma {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
+	@Column(updatable=false, nullable=false, columnDefinition="VARCHAR(36)")
+	@Type(type="uuid-char")
 	private UUID uuid;
 	private String local;
 	private String horario;
 	private boolean status;
-	private long discplina_id;
+	private String disc_cod;
 	
 	public long getId() {
 		return id;
@@ -49,12 +54,13 @@ public class Turma {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	public long getDiscplina_id() {
-		return discplina_id;
+	public String getDisc_cod() {
+		return disc_cod;
 	}
-	public void setDiscplina_id(long discplina_id) {
-		this.discplina_id = discplina_id;
+	public void setDisc_cod(String disc_cod) {
+		this.disc_cod = disc_cod;
 	}
+
 
 	
 }

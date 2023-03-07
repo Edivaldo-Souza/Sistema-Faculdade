@@ -45,8 +45,7 @@ public class AlunoController {
 	
 	@GetMapping("/id")
 	public ResponseEntity<AlunoDTO> getAt(@PathVariable UUID id){
-		Aluno aluno = service.getAt(id);
-		AlunoDTO dto = mapper.map(aluno, AlunoDTO.class);
+		AlunoDTO dto = mapper.map(service.getAt(id), AlunoDTO.class);
 		if(dto!=null) {
 			return new ResponseEntity<>(dto,HttpStatus.OK);
 		}

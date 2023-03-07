@@ -3,9 +3,12 @@ package br.edu.ufersa.SistemaFaculdadeWeb.api.domain.service;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
+
 import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.Professor;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.repository.ProfessorRepository;
 
+@Service
 public class ProfessorService implements ServiceInterface<Professor>{
 	ProfessorRepository rep;
 	@Override

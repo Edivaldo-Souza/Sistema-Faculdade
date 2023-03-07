@@ -1,5 +1,7 @@
 package br.edu.ufersa.SistemaFaculdadeWeb.api.dto;
 
+import java.util.UUID;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -10,6 +12,7 @@ public class AtualizarAlunoDTO {
 	private String endereco;
 	@Size(min=8,max=20,message="A senha deve ter entre 8 a 20 digitos")
 	private String senha;
+	private UUID uuid;
 	public String getNome() {
 		return nome;
 	}
@@ -27,5 +30,11 @@ public class AtualizarAlunoDTO {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public UUID getUuid() {
+		return uuid;
+	}
+	public void setUuid(UUID uuid) {
+		this.uuid = uuid;
 	}
 }

@@ -1,5 +1,6 @@
 package br.edu.ufersa.SistemaFaculdadeWeb.api.domain.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -7,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.Aluno;
+import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.Autorizacao;
+import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.Usuario;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.repository.AlunoRepository;
+import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.repository.UsuarioRepository;
 
 @Service
 public class AlunoService implements ServiceInterface<Aluno>{
@@ -22,31 +26,38 @@ public class AlunoService implements ServiceInterface<Aluno>{
 
 	@Override
 	public Aluno getAt(UUID id) {
-		// TODO Auto-generated method stub
-		return null;
+		Aluno aluno = repository.findByUuid(id);
+		return aluno;
 	}
 
 	@Override
 	public Aluno create(Aluno obj) {
 		obj.setUuid(UUID.randomUUID());
+		obj.setPermissao(Autorizacao.ALUNO);
 		repository.save(obj);
 		return obj;
 	}
 
 	@Override
 	public Aluno update(Aluno obj) {
-		repository.save(obj);
-		return obj;
+		Aluno dados = repository.findByUuid(obj.getUuid());
+		obj.setId(dados.getId());
+		return repository.save(obj);
 	}
 
 	@Override
 	public Aluno updatePatch(Aluno obj) {
-		// TODO Auto-generated method stub
-		return null;
+		Aluno dados = repository.findByNome(obj.getNome());
+		obj.setId(dados.getId());
+		obj.setUuid(dados.getUuid());
+		return repository.save(obj);
 	}
 
 	@Override
 	public boolean delete(UUID id) {
-		return false;
+		Aluno aluno = repository.findByUuid(id);
+		if(aluno==null) return false;
+		repository.delete(aluno);
+		return true;
 	}
 }
