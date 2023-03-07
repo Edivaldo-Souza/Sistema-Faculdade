@@ -3,9 +3,12 @@ package br.edu.ufersa.SistemaFaculdadeWeb.api.domain.service;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
+
 import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.Disciplina;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.repository.DisciplinaRepository;
 
+@Service
 public class DisciplinaService implements ServiceInterface<Disciplina>{
 	
 	DisciplinaRepository rep;
@@ -18,8 +21,8 @@ public class DisciplinaService implements ServiceInterface<Disciplina>{
 
 	@Override
 	public Disciplina getAt(UUID id) {
-		// TODO Auto-generated method stub
-		return null;
+		Disciplina disc = rep.findByUuid(id);
+		return disc;
 	}
 
 	@Override
@@ -31,6 +34,11 @@ public class DisciplinaService implements ServiceInterface<Disciplina>{
 	
 	@Override
 	public boolean delete(UUID id) {
+		Disciplina disc = rep.findByUuid(id);
+		if(disc != null) {
+			rep.delete(disc);
+			return true;
+		}
 		return false;
 	}
 
@@ -42,8 +50,10 @@ public class DisciplinaService implements ServiceInterface<Disciplina>{
 
 	@Override
 	public Disciplina updatePatch(Disciplina obj) {
-		// TODO Auto-generated method stub
-		return null;
+		Disciplina disc = rep.findByCodigo(obj.getCodigo());
+		obj.setId(disc.getId());
+		obj.setUuid(disc.getUuid());
+		return rep.save(obj);
 	}
 
 }
