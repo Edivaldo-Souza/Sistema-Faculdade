@@ -1,6 +1,5 @@
 package br.edu.ufersa.SistemaFaculdadeWeb.api.domain.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,6 +16,8 @@ import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.repository.UsuarioRepository
 public class AlunoService implements ServiceInterface<Aluno>{
 	@Autowired
 	AlunoRepository repository;
+	@Autowired
+	UsuarioRepository repositoryUser;
 
 	@Override
 	public List<Aluno> getAll() {
@@ -32,8 +33,12 @@ public class AlunoService implements ServiceInterface<Aluno>{
 
 	@Override
 	public Aluno create(Aluno obj) {
+		Usuario user = new Usuario();
+		user.setNome(obj.getNome());
+		user.setSenha(obj.getSenha());
+		user.setPermissao(obj.getPermissao());
+		repositoryUser.save(user);
 		obj.setUuid(UUID.randomUUID());
-		obj.setPermissao(Autorizacao.ALUNO);
 		repository.save(obj);
 		return obj;
 	}

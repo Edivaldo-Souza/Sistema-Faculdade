@@ -27,7 +27,7 @@ import br.edu.ufersa.SistemaFaculdadeWeb.api.dto.AtualizarTurmaDTO;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.dto.CriarTurmaDTO;
 
 @RestController
-@RequestMapping("api/Turma")
+@RequestMapping("api/turma")
 public class TurmaController {
 	@Autowired
 	private TurmaService service;

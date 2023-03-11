@@ -20,6 +20,7 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
+	private Autorizacao permissao;
 	public String getNome() {
 		return nome;
 	}
@@ -37,5 +38,11 @@ public class Usuario {
 	}
 	public void setId(long id) {
 		this.id = id;
+	}
+	public Autorizacao getPermissao() {
+		return permissao;
+	}
+	public void setPermissao(Autorizacao permissao) {
+		this.permissao = permissao;
 	}
 }

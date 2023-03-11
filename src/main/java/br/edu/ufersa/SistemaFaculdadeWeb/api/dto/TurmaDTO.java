@@ -8,8 +8,8 @@ public class TurmaDTO {
 	private String local;
 	private String horario;
 	private boolean status;
-	private String discplina_id;
-
+	private String disc_cod;
+	private String prof_cpf;
 
 	public UUID getUuid() {
 		return uuid;
@@ -35,12 +35,19 @@ public class TurmaDTO {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	public String getDiscplina_id() {
-		return discplina_id;
+	public String getDisc_cod() {
+		return disc_cod;
 	}
-	public void setDiscplina_id(String discplina_id) {
-		this.discplina_id = discplina_id;
+	public void setDisc_cod(String disc_cod) {
+		this.disc_cod = disc_cod;
 	}
+	public String getProf_cpf() {
+		return prof_cpf;
+	}
+	public void setProf_cpf(String prof_cpf) {
+		this.prof_cpf = prof_cpf;
+	}
+	
 
 		
 }

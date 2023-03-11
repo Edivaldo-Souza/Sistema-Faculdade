@@ -6,13 +6,18 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.Autorizacao;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.Professor;
+import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.Usuario;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.repository.ProfessorRepository;
+import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.repository.UsuarioRepository;
 
 @Service
 public class ProfessorService implements ServiceInterface<Professor>{
 	@Autowired
 	ProfessorRepository rep;
+	@Autowired
+	UsuarioRepository repositoryUser;
 	
 	public List<Professor> getAll() {
 		List<Professor> profs = rep.findAll();
@@ -25,6 +30,11 @@ public class ProfessorService implements ServiceInterface<Professor>{
 	}
 
 	public Professor create(Professor obj) {
+		Usuario user = new Usuario();
+		user.setNome(obj.getNome());
+		user.setSenha(obj.getSenha());
+		user.setPermissao(Autorizacao.PROF);
+		repositoryUser.save(user);
 		obj.setUuid(UUID.randomUUID());
 		rep.save(obj);
 		return obj;
@@ -40,6 +50,8 @@ public class ProfessorService implements ServiceInterface<Professor>{
 	}
 
 	public Professor update(Professor obj) {
+		Professor prof = rep.findByUuid(obj.getUuid());
+		obj.setId(prof.getId());
 		rep.save(obj);
 		return obj;
 	}

@@ -8,7 +8,7 @@ public class CriarProfessorDTO {
 	private String cpf;
 	private String nome;
 	@NotBlank(message="Não pode deixar esse campo vazio oh Zé '-'.")
-	@Size(min=8, max=20,message="Seguinte parceiro. Senha entre 8 e 20 caracteres.")
+	@Size(min=8,message="Seguinte parceiro. Senha entre 8 e 20 caracteres.")
 	private String senha;
 	@NotBlank(message="Deve-se informar o Endereço.")
 	private String endereco;

@@ -27,7 +27,7 @@ import br.edu.ufersa.SistemaFaculdadeWeb.api.dto.AtualizarDiretorDTO;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.dto.CriarDiretorDTO;
 
 @RestController
-@RequestMapping("api/Diretor")
+@RequestMapping("api/diretor")
 public class DiretorController {
 	@Autowired
 	private DiretorService service;

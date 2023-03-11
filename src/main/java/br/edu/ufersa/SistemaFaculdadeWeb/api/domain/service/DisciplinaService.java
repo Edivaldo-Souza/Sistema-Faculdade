@@ -45,6 +45,8 @@ public class DisciplinaService implements ServiceInterface<Disciplina>{
 
 	@Override
 	public Disciplina update(Disciplina obj) {
+		Disciplina disc = rep.findByUuid(obj.getUuid());
+		obj.setId(disc.getId());
 		rep.save(obj);
 		return obj;
 	}

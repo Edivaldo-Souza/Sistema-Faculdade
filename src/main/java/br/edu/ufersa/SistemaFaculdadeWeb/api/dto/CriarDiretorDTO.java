@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 public class CriarDiretorDTO {
 	@NotBlank(message="O nome não deve estar vazio")
 	private String nome;
-	@Size(min=8,max=20,message="A senha deve ter entre 8 a 20 digitos")
+	@Size(min=8,message="A senha deve ter entre 8 a 20 digitos")
 	private String senha;
 	private UUID uuid;
 	public String getNome() {

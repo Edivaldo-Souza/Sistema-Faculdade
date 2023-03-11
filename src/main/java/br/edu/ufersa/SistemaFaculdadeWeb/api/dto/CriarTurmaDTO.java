@@ -6,11 +6,12 @@ import javax.validation.constraints.Size;
 public class CriarTurmaDTO {
 	@NotBlank(message="O local não deve estar vazio")
 	private String local;
-	@Size(min=8,max=20,message="O horario não deve estar vazio")
+	@NotBlank(message="O horario não deve estar vazio")
 	private String horario;
 	@NotBlank(message="O id da disciplina não deve estar vazio")
-	private String discplina_id;
-	private boolean status;
+	private String disc_cod;
+	
+	private String prof_cpf;
 	public String getLocal() {
 		return local;
 	}
@@ -23,17 +24,16 @@ public class CriarTurmaDTO {
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
-	public String getDiscplina_id() {
-		return discplina_id;
+	public String getProf_cpf() {
+		return prof_cpf;
 	}
-	public void setDiscplina_id(String discplina_id) {
-		this.discplina_id = discplina_id;
+	public void setProf_cpf(String prof_cpf) {
+		this.prof_cpf = prof_cpf;
 	}
-	public boolean isStatus() {
-		return status;
+	public String getDisc_cod() {
+		return disc_cod;
 	}
-	public void setStatus(boolean status) {
-		this.status = status;
+	public void setDisc_cod(String disc_cod) {
+		this.disc_cod = disc_cod;
 	}
-
 }

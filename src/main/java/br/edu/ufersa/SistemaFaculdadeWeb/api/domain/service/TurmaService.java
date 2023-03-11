@@ -22,13 +22,14 @@ public class TurmaService implements ServiceInterface<Turma>{
 
 	@Override
 	public Turma getAt(UUID id) {
-		// TODO Auto-generated method stub
-		return null;
+		Turma turma = repository.findByUuid(id);
+		return turma;
 	}
 
 	@Override
 	public Turma create(Turma obj) {
 		obj.setUuid(UUID.randomUUID());
+		obj.setStatus(true);
 		repository.save(obj);
 		return obj;
 	}
@@ -47,6 +48,8 @@ public class TurmaService implements ServiceInterface<Turma>{
 
 	@Override
 	public boolean delete(UUID id) {
-		return false;
+		Turma turma = repository.findByUuid(id);
+		if(turma!=null) {repository.delete(turma); return true;}
+		else return false;
 	}
 }

@@ -7,8 +7,6 @@ import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.Autorizacao;
 public class DiretorDTO {
 	private String nome;
 	private UUID uuid;
-	private final Autorizacao permissao = Autorizacao.DIR;
-	private String senha;
 	
 	public String getNome() {
 		return nome;
@@ -22,14 +20,4 @@ public class DiretorDTO {
 	public void setUuid(UUID uuid) {
 		this.uuid = uuid;
 	}
-	public Autorizacao getPermissao() {
-		return permissao;
-	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	
 }

@@ -18,7 +18,7 @@ public class Aluno{
 	private String nome;
 	private String senha;
 	private String endereco;
-	private Autorizacao permissao;
+	private final Autorizacao permissao = Autorizacao.ALUNO;
 	private String matricula;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -58,9 +58,6 @@ public class Aluno{
 	}
 	public Autorizacao getPermissao() {
 		return permissao;
-	}
-	public void setPermissao(Autorizacao permissao) {
-		this.permissao = permissao;
 	}
 	public String getMatricula() {
 		return matricula;

@@ -5,10 +5,11 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.Usuario;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.repository.UsuarioRepository;
-
+@Service
 public class UserDetailsServiceImpl implements UserDetailsService{
 	@Autowired
 	UsuarioRepository usuarioRep;

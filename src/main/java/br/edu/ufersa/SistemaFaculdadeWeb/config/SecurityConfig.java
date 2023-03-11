@@ -1,11 +1,15 @@
 package br.edu.ufersa.SistemaFaculdadeWeb.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +20,9 @@ import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.service.UserDetailsServiceIm
 import br.edu.ufersa.SistemaFaculdadeWeb.api.filters.AuthorizationFilter;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.filters.LoginFilter;
 
+@Configuration
+@EnableWebSecurity
+@EnableMethodSecurity(prePostEnabled=true)
 public class SecurityConfig {
 	@Autowired
 	private UserDetailsServiceImpl userDetailService;
@@ -33,8 +40,9 @@ public class SecurityConfig {
 		.disable().authorizeHttpRequests()
 		.antMatchers(HttpMethod.POST,"/api/login").permitAll()
 		.antMatchers(HttpMethod.POST,"/api/aluno").permitAll()
+		.antMatchers(HttpMethod.POST,"/api/diretor").permitAll()
 		.anyRequest().authenticated().and()
-		.addFilterBefore(new LoginFilter("api/login",authManager),UsernamePasswordAuthenticationFilter.class)
+		.addFilterBefore(new LoginFilter("/api/login",authManager),UsernamePasswordAuthenticationFilter.class)
 		.addFilterBefore(new AuthorizationFilter(),UsernamePasswordAuthenticationFilter.class)
 		.authenticationManager(authManager)
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

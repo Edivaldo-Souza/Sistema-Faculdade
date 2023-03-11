@@ -23,6 +23,7 @@ public class Turma {
 	private String horario;
 	private boolean status;
 	private String disc_cod;
+	private String prof_cpf;
 	
 	public long getId() {
 		return id;
@@ -59,6 +60,12 @@ public class Turma {
 	}
 	public void setDisc_cod(String disc_cod) {
 		this.disc_cod = disc_cod;
+	}
+	public String getProf_cpf() {
+		return prof_cpf;
+	}
+	public void setProf_cpf(String prof_cpf) {
+		this.prof_cpf = prof_cpf;
 	}
 
 
