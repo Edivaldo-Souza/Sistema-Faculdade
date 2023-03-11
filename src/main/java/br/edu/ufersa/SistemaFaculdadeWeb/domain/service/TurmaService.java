@@ -1,4 +1,4 @@
-package br.edu.ufersa.SistemaFaculdadeWeb.api.domain.service;
+package br.edu.ufersa.SistemaFaculdadeWeb.domain.service;
 
 import java.util.List;
 import java.util.UUID;
@@ -6,8 +6,8 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.Turma;
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.repository.TurmaRepository;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.entities.Turma;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.repository.TurmaRepository;
 
 @Service
 public class TurmaService implements ServiceInterface<Turma>{

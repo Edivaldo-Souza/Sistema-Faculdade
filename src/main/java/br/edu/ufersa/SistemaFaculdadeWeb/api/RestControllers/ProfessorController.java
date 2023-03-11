@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.Professor;
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.service.ProfessorService;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.entities.Professor;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.service.ProfessorService;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.dto.AtualizarProfessorDTO;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.dto.CriarProfessorDTO;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.dto.ProfessorDTO;

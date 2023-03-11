@@ -1,4 +1,4 @@
-package br.edu.ufersa.SistemaFaculdadeWeb.api.domain.service;
+package br.edu.ufersa.SistemaFaculdadeWeb.domain.service;
 
 import java.util.List;
 import java.util.UUID;
@@ -6,9 +6,9 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.ResultadoAluno;
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.SituacaoAluno;
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.repository.ResultadoRepository;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.entities.ResultadoAluno;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.entities.SituacaoAluno;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.repository.ResultadoRepository;
 
 @Service
 public class ResultadoAlunoService implements ServiceInterface<ResultadoAluno>{

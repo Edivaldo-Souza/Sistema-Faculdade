@@ -1,7 +1,7 @@
-package br.edu.ufersa.SistemaFaculdadeWeb.api.domain.repository;
+package br.edu.ufersa.SistemaFaculdadeWeb.domain.repository;
 
 
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.Usuario;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.entities.Usuario;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

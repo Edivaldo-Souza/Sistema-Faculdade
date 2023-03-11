@@ -2,7 +2,7 @@ package br.edu.ufersa.SistemaFaculdadeWeb.api.dto;
 
 import java.util.UUID;
 
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.SituacaoAluno;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.entities.SituacaoAluno;
 
 public class ResultadoAlunoDTO {
 	private UUID uuid;

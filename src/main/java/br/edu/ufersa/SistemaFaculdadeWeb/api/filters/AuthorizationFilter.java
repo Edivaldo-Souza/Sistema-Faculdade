@@ -12,7 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
 
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.service.AuthenticationService;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.service.AuthenticationService;
 
 public class AuthorizationFilter extends GenericFilterBean{
 

@@ -3,8 +3,8 @@ package br.edu.ufersa.SistemaFaculdadeWeb.api.filters;
 import java.io.IOException;
 import java.util.Collections;
 
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.Usuario;
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.service.AuthenticationService;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.entities.Usuario;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.service.AuthenticationService;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

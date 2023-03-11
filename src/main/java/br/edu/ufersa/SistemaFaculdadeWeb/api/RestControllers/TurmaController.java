@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.Turma;
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.service.TurmaService;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.entities.Turma;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.service.TurmaService;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.dto.TurmaDTO;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.dto.AtualizarTurmaDTO;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.dto.CriarTurmaDTO;

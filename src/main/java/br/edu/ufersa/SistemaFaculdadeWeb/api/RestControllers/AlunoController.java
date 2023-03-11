@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.Aluno;
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.service.AlunoService;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.entities.Aluno;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.service.AlunoService;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.dto.AlunoDTO;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.dto.AtualizarAlunoDTO;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.dto.CriarAlunoDTO;

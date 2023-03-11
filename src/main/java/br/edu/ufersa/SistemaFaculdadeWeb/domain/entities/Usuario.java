@@ -1,4 +1,4 @@
-package br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities;
+package br.edu.ufersa.SistemaFaculdadeWeb.domain.entities;
 
 import java.util.UUID;
 
@@ -12,20 +12,15 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Type;
 
 @Entity
-@Table(name="tb_alunos")
-public class Aluno{
+@Table(name="tb_usuarios")
+public class Usuario {
 	@Column(unique=true, nullable=false)
 	private String nome;
 	private String senha;
-	private String endereco;
-	private final Autorizacao permissao = Autorizacao.ALUNO;
-	private String matricula;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
-	@Column(updatable=false, nullable=false, columnDefinition="VARCHAR(36)")
-	@Type(type="uuid-char")
-	private UUID uuid;
+	private Autorizacao permissao;
 	public String getNome() {
 		return nome;
 	}
@@ -38,31 +33,16 @@ public class Aluno{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public String getEndereco() {
-		return endereco;
-	}
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
-	public UUID getUuid() {
-		return uuid;
-	}
-	public void setUuid(UUID uuid) {
-		this.uuid = uuid;
-	}
 	public Autorizacao getPermissao() {
 		return permissao;
 	}
-	public String getMatricula() {
-		return matricula;
-	}
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
+	public void setPermissao(Autorizacao permissao) {
+		this.permissao = permissao;
 	}
 }

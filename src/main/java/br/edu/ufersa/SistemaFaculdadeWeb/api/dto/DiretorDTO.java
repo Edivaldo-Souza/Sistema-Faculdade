@@ -2,8 +2,6 @@ package br.edu.ufersa.SistemaFaculdadeWeb.api.dto;
 
 import java.util.UUID;
 
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.Autorizacao;
-
 public class DiretorDTO {
 	private String nome;
 	private UUID uuid;

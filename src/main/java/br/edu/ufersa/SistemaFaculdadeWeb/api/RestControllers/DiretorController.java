@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.Diretor;
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.service.DiretorService;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.entities.Diretor;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.service.DiretorService;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.dto.DiretorDTO;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.dto.AtualizarDiretorDTO;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.dto.CriarDiretorDTO;

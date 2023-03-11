@@ -1,6 +1,6 @@
 package br.edu.ufersa.SistemaFaculdadeWeb.api.dto;
 
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.entities.SituacaoAluno;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.entities.SituacaoAluno;
 
 public class AtualizarResultadoAlunoDTO {
 	private float frequencia;

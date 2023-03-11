@@ -1,4 +1,4 @@
-package br.edu.ufersa.SistemaFaculdadeWeb.api.domain.service;
+package br.edu.ufersa.SistemaFaculdadeWeb.domain.service;
 
 import java.util.List;
 import java.util.UUID;

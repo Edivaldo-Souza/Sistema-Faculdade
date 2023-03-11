@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import br.edu.ufersa.SistemaFaculdadeWeb.api.domain.service.UserDetailsServiceImpl;
+import br.edu.ufersa.SistemaFaculdadeWeb.domain.service.UserDetailsServiceImpl;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.filters.AuthorizationFilter;
 import br.edu.ufersa.SistemaFaculdadeWeb.api.filters.LoginFilter;
 
