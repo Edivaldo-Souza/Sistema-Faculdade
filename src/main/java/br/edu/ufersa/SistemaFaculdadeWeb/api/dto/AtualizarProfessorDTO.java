@@ -10,6 +10,7 @@ public class AtualizarProfessorDTO {
 	private String nome;
 	@NotBlank(message="O endereco não deve estar vazio")
 	private String endereco;
+	@NotBlank(message="A senha nao pode estar vazia")
 	@Size(min=8,max=20,message="Seguinte parceiro. Senha entre 8 e 20 caracteres.")
 	private String senha;
 	private UUID uuid;

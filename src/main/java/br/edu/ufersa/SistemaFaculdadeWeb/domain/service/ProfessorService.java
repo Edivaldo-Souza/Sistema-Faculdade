@@ -6,7 +6,6 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.edu.ufersa.SistemaFaculdadeWeb.domain.entities.Autorizacao;
 import br.edu.ufersa.SistemaFaculdadeWeb.domain.entities.Professor;
 import br.edu.ufersa.SistemaFaculdadeWeb.domain.entities.Usuario;
 import br.edu.ufersa.SistemaFaculdadeWeb.domain.repository.ProfessorRepository;
@@ -30,36 +29,57 @@ public class ProfessorService implements ServiceInterface<Professor>{
 	}
 
 	public Professor create(Professor obj) {
-		Usuario user = new Usuario();
-		user.setNome(obj.getNome());
-		user.setSenha(obj.getSenha());
-		user.setPermissao(Autorizacao.PROF);
-		repositoryUser.save(user);
 		obj.setUuid(UUID.randomUUID());
 		rep.save(obj);
+		Professor dados = rep.findByCpf(obj.getCpf());
+		
+		Usuario user = new Usuario();
+		user.setId(dados.getId());
+		user.setNome(obj.getNome());
+		user.setSenha(obj.getSenha());
+		user.setPermissao(obj.getPermissao());
+		repositoryUser.save(user);
+		
 		return obj;
 	}
 	
 	public boolean delete(UUID id) {
 		Professor prof = rep.findByUuid(id);
 		if(prof != null){
+			Usuario user = repositoryUser.findById(prof.getId());
 			rep.delete(prof);
+			repositoryUser.delete(user);
 			return true;
 		}
 		return false;
 	}
 
 	public Professor update(Professor obj) {
-		Professor prof = rep.findByUuid(obj.getUuid());
-		obj.setId(prof.getId());
-		rep.save(obj);
-		return obj;
+		Professor dados = rep.findByUuid(obj.getUuid());
+		obj.setId(dados.getId());
+		obj.setCpf(dados.getCpf());
+		
+		Usuario user = repositoryUser.findById(obj.getId());
+		user.setNome(obj.getNome());
+		user.setSenha(obj.getSenha());
+		user.setPermissao(obj.getPermissao());
+		repositoryUser.save(user);
+		
+		return rep.save(obj);
 	}
 
 	public Professor updatePatch(Professor obj) {
-		Professor prof = rep.findByCpf(obj.getCpf());
-		obj.setId(prof.getId());
-		obj.setUuid(prof.getUuid());		
+		Professor dados = rep.findByCpf(obj.getCpf());
+		obj.setId(dados.getId());
+		obj.setUuid(dados.getUuid());
+		obj.setCpf(dados.getCpf());
+		
+		Usuario user = repositoryUser.findById(obj.getId());
+		user.setNome(obj.getNome());
+		user.setSenha(obj.getSenha());
+		user.setPermissao(obj.getPermissao());
+		repositoryUser.save(user);
+		
 		return rep.save(obj);
 	}
 

@@ -27,28 +27,38 @@ public class DiretorService implements ServiceInterface<Diretor>{
 
 	@Override
 	public Diretor getAt(UUID id) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findByUuid(id);
 	}
 
 	@Override
 	public Diretor create(Diretor obj) {
+		
+		obj.setUuid(UUID.randomUUID());
+		Diretor dir = repository.save(obj);
+		
 		Usuario user = new Usuario();
+		user.setId(dir.getId());
 		user.setNome(obj.getNome());
 		user.setSenha(obj.getSenha());
 		user.setPermissao(obj.getPermissao());
 		repositoryUser.save(user);
-		obj.setUuid(UUID.randomUUID());
-		repository.save(obj);
+		
 		return obj;
 	}
 
 	@Override
 	public Diretor update(Diretor obj) {
+		
 		Diretor dir = repository.findByUuid(obj.getUuid());
 		obj.setId(dir.getId());
-		repository.save(obj);
-		return obj;
+		
+		Usuario user = repositoryUser.findById(obj.getId());
+		user.setNome(obj.getNome());
+		user.setSenha(obj.getSenha());
+		user.setPermissao(obj.getPermissao());
+		repositoryUser.save(user);
+		
+		return repository.save(obj);
 	}
 
 	@Override
@@ -61,7 +71,9 @@ public class DiretorService implements ServiceInterface<Diretor>{
 	public boolean delete(UUID id) {
 		Diretor dir = repository.findByUuid(id);
 		if(dir!=null) {
+			Usuario user = repositoryUser.findById(dir.getId());
 			repository.delete(dir);
+			repositoryUser.delete(user);
 			return true;
 		}
 		return false;

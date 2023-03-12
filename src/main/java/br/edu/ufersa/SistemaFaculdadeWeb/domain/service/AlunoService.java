@@ -27,26 +27,38 @@ public class AlunoService implements ServiceInterface<Aluno>{
 
 	@Override
 	public Aluno getAt(UUID id) {
-		Aluno aluno = repository.findByUuid(id);
-		return aluno;
+		return repository.findByUuid(id);
 	}
 
 	@Override
 	public Aluno create(Aluno obj) {
+		obj.setUuid(UUID.randomUUID());
+		repository.save(obj);
+		Aluno dados = repository.findByNome(obj.getNome());
+		
 		Usuario user = new Usuario();
+		user.setId(dados.getId());
 		user.setNome(obj.getNome());
 		user.setSenha(obj.getSenha());
 		user.setPermissao(obj.getPermissao());
 		repositoryUser.save(user);
-		obj.setUuid(UUID.randomUUID());
-		repository.save(obj);
+		
 		return obj;
 	}
 
 	@Override
 	public Aluno update(Aluno obj) {
+		
 		Aluno dados = repository.findByUuid(obj.getUuid());
 		obj.setId(dados.getId());
+		obj.setMatricula(dados.getMatricula());
+		
+		Usuario user = repositoryUser.findById(obj.getId());
+		user.setNome(obj.getNome());
+		user.setSenha(obj.getSenha());
+		user.setPermissao(obj.getPermissao());
+		repositoryUser.save(user);
+		
 		return repository.save(obj);
 	}
 
@@ -55,14 +67,26 @@ public class AlunoService implements ServiceInterface<Aluno>{
 		Aluno dados = repository.findByNome(obj.getNome());
 		obj.setId(dados.getId());
 		obj.setUuid(dados.getUuid());
+		obj.setMatricula(dados.getMatricula());
+		
+		Usuario user = repositoryUser.findById(obj.getId());
+		user.setNome(obj.getNome());
+		user.setSenha(obj.getSenha());
+		user.setPermissao(obj.getPermissao());
+		repositoryUser.save(user);
+		
 		return repository.save(obj);
 	}
 
 	@Override
 	public boolean delete(UUID id) {
 		Aluno aluno = repository.findByUuid(id);
+		
 		if(aluno==null) return false;
+		
+		Usuario user = repositoryUser.findById(aluno.getId());
 		repository.delete(aluno);
+		repositoryUser.delete(user);
 		return true;
 	}
 }

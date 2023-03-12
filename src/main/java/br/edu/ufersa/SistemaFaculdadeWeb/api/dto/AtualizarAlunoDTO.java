@@ -10,7 +10,8 @@ public class AtualizarAlunoDTO {
 	private String nome;
 	@NotBlank(message="O endereco não deve estar vazio")
 	private String endereco;
-	@Size(min=8,max=20,message="A senha deve ter entre 8 a 20 digitos")
+	@NotBlank(message="A senha nao pode estar vazia")
+	@Size(min=8,message="A senha deve ter entre 8 a 20 digitos")
 	private String senha;
 	private UUID uuid;
 	public String getNome() {

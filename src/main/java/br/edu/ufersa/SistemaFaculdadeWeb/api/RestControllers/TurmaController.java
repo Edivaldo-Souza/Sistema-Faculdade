@@ -43,7 +43,7 @@ public class TurmaController {
 		return Turmas;
 	}
 	
-	@GetMapping("/id")
+	@GetMapping("/{id}")
 	public ResponseEntity<TurmaDTO> getAt(@PathVariable UUID id){
 		Turma Turma = service.getAt(id);
 		TurmaDTO dto = mapper.map(Turma, TurmaDTO.class);
@@ -80,8 +80,8 @@ public class TurmaController {
 		}
 		else return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	@DeleteMapping("/id")
-	public String delete(UUID id){
+	@DeleteMapping("/{id}")
+	public String delete(@PathVariable UUID id){
 		if(service.delete(id)) {
 			return "Turma deletada";
 		}

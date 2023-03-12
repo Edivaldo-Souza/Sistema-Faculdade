@@ -43,7 +43,7 @@ public class DiretorController {
 		return Diretors;
 	}
 	
-	@GetMapping("/id")
+	@GetMapping("/{id}")
 	public ResponseEntity<DiretorDTO> getAt(@PathVariable UUID id){
 		Diretor Diretor = service.getAt(id);
 		DiretorDTO dto = mapper.map(Diretor, DiretorDTO.class);
@@ -80,8 +80,8 @@ public class DiretorController {
 		}
 		else return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	@DeleteMapping("/id")
-	public String delete(UUID id){
+	@DeleteMapping("/{id}")
+	public String delete(@PathVariable UUID id){
 		if(service.delete(id)) {
 			return "Diretor deletada";
 		}

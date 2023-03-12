@@ -36,6 +36,8 @@ public class TurmaService implements ServiceInterface<Turma>{
 
 	@Override
 	public Turma update(Turma obj) {
+		Turma dados = repository.findByUuid(obj.getUuid());
+		obj.setId(dados.getId());
 		repository.save(obj);
 		return obj;
 	}

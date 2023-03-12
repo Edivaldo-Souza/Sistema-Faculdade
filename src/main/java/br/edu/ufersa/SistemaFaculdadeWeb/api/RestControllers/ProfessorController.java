@@ -47,7 +47,7 @@ public class ProfessorController {
 	public ResponseEntity<ProfessorDTO> getAt(@PathVariable UUID uuid){
 		Professor p = service.getAt(uuid);
 		if(p != null) {
-			ProfessorDTO dto = mapper.map(p, ProfessorDTO.class);
+			ProfessorDTO dto = mapper.map(service.getAt(uuid), ProfessorDTO.class);
 			return new ResponseEntity<>(dto, HttpStatus.FOUND);
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);

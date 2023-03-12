@@ -44,7 +44,7 @@ public class ResultadoAlunoController {
 		return results;
 	}
 	
-	@GetMapping("/id")
+	@GetMapping("/{id}")
 	public ResponseEntity<ResultadoAlunoDTO> getAt(@PathVariable UUID id){
 		ResultadoAlunoDTO dto = mapper.map(service.getAt(id), ResultadoAlunoDTO.class);
 		if(dto!=null) {
@@ -80,8 +80,8 @@ public class ResultadoAlunoController {
 		}
 		else return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	@DeleteMapping("/id")
-	public String delete(UUID id){
+	@DeleteMapping("/{id}")
+	public String delete(@PathVariable UUID id){
 		if(service.delete(id)) {
 			return "ResultadoAluno deletado";
 		}
