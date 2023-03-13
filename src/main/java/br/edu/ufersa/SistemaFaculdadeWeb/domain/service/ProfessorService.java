@@ -29,16 +29,16 @@ public class ProfessorService implements ServiceInterface<Professor>{
 	}
 
 	public Professor create(Professor obj) {
-		obj.setUuid(UUID.randomUUID());
-		rep.save(obj);
-		Professor dados = rep.findByCpf(obj.getCpf());
 		
 		Usuario user = new Usuario();
-		user.setId(dados.getId());
 		user.setNome(obj.getNome());
 		user.setSenha(obj.getSenha());
 		user.setPermissao(obj.getPermissao());
-		repositoryUser.save(user);
+		Usuario dados = repositoryUser.save(user);
+		
+		obj.setId(dados.getId());
+		obj.setUuid(UUID.randomUUID());
+		rep.save(obj);
 		
 		return obj;
 	}

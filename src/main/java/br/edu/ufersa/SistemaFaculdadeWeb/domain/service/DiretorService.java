@@ -33,15 +33,15 @@ public class DiretorService implements ServiceInterface<Diretor>{
 	@Override
 	public Diretor create(Diretor obj) {
 		
-		obj.setUuid(UUID.randomUUID());
-		Diretor dir = repository.save(obj);
-		
 		Usuario user = new Usuario();
-		user.setId(dir.getId());
 		user.setNome(obj.getNome());
 		user.setSenha(obj.getSenha());
 		user.setPermissao(obj.getPermissao());
-		repositoryUser.save(user);
+		Usuario dados = repositoryUser.save(user);
+		
+		obj.setId(dados.getId());
+		obj.setUuid(UUID.randomUUID());
+		repository.save(obj);
 		
 		return obj;
 	}

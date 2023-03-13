@@ -21,7 +21,6 @@ public class Aluno{
 	private final Autorizacao permissao = Autorizacao.ALUNO;
 	private String matricula;
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	@Column(updatable=false, nullable=false, columnDefinition="VARCHAR(36)")
 	@Type(type="uuid-char")

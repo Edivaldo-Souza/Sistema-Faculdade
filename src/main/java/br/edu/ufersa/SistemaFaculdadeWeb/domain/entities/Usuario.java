@@ -18,6 +18,7 @@ public class Usuario {
 	private String nome;
 	private String senha;
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	private Autorizacao permissao;
 	public String getNome() {
