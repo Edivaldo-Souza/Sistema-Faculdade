@@ -38,6 +38,8 @@ public class TurmaService implements ServiceInterface<Turma>{
 	public Turma update(Turma obj) {
 		Turma dados = repository.findByUuid(obj.getUuid());
 		obj.setId(dados.getId());
+		obj.setDisc_cod(dados.getDisc_cod());
+		obj.setProf_cpf(dados.getProf_cpf());
 		repository.save(obj);
 		return obj;
 	}

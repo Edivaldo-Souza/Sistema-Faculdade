@@ -43,14 +43,18 @@ public class ResultadoAlunoService implements ServiceInterface<ResultadoAluno>{
 	@Override
 	public ResultadoAluno update(ResultadoAluno obj) {
 		ResultadoAluno dados = repository.findByUuid(obj.getUuid());
-		obj.setTurma_id(dados.getTurma_id());
+		obj.setId(dados.getId());
+		obj.setDisc_cod(dados.getDisc_cod());
+		obj.setMatricula(dados.getMatricula());
 		return repository.save(obj);
 	}
 
 	@Override
 	public ResultadoAluno updatePatch(ResultadoAluno obj) {
-		// TODO Auto-generated method stub
-		return null;
+		ResultadoAluno dados = repository.findByMatricula(obj.getMatricula());
+		obj.setId(dados.getId());
+		obj.setDisc_cod(dados.getDisc_cod());
+		return repository.save(obj);
 	}
 
 	@Override

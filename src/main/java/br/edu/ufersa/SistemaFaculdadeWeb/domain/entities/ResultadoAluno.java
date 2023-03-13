@@ -20,8 +20,11 @@ public class ResultadoAluno {
 	@Column(updatable=false, nullable=false, columnDefinition="VARCHAR(36)")
 	@Type(type="uuid-char")
 	private UUID uuid;
+	@Column(updatable=false, nullable=false)
 	private String matricula;
 	private String disc_cod;
+	@Column(updatable=false, nullable=false, columnDefinition="VARCHAR(36)")
+	@Type(type="uuid-char")
 	private UUID turma_id;
 	private float frequencia;
 	private double nota1;

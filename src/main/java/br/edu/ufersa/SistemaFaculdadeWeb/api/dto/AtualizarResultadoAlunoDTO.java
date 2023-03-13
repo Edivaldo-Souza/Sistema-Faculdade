@@ -1,5 +1,7 @@
 package br.edu.ufersa.SistemaFaculdadeWeb.api.dto;
 
+import java.util.UUID;
+
 import br.edu.ufersa.SistemaFaculdadeWeb.domain.entities.SituacaoAluno;
 
 public class AtualizarResultadoAlunoDTO {
@@ -9,6 +11,8 @@ public class AtualizarResultadoAlunoDTO {
 	private double nota3;
 	private double media;
 	private SituacaoAluno status;
+	private UUID uuid;
+	private String matricula;
 	public float getFrequencia() {
 		return frequencia;
 	}
@@ -44,5 +48,17 @@ public class AtualizarResultadoAlunoDTO {
 	}
 	public void setStatus(SituacaoAluno status) {
 		this.status = status;
+	}
+	public UUID getUuid() {
+		return uuid;
+	}
+	public void setUuid(UUID uuid) {
+		this.uuid = uuid;
+	}
+	public String getMatricula() {
+		return matricula;
+	}
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
 	}
 }
