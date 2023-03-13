@@ -64,8 +64,8 @@ public class DiretorService implements ServiceInterface<Diretor>{
 	@Override
 	public Diretor updatePatch(Diretor obj) {
 		
-		Diretor dir = repository.findByUuid(obj.getUuid());
-		obj.setId(dir.getId());
+		Diretor dados = repository.findByUuid(obj.getUuid());
+		obj.setId(dados.getId());
 		obj.setUuid(dados.getUuid());
 		
 		Usuario user = repositoryUser.findById(obj.getId());
