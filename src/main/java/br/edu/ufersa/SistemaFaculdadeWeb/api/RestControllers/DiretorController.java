@@ -83,7 +83,7 @@ public class DiretorController {
 	@DeleteMapping("/{id}")
 	public String delete(@PathVariable UUID id){
 		if(service.delete(id)) {
-			return "Diretor deletada";
+			return "Diretor deletado";
 		}
 		else {
 			return "Nao foi possivel deletar";
