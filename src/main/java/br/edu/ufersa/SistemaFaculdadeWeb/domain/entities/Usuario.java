@@ -1,7 +1,5 @@
 package br.edu.ufersa.SistemaFaculdadeWeb.domain.entities;
 
-import java.util.UUID;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

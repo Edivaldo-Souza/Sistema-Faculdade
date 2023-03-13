@@ -15,11 +15,12 @@ import org.hibernate.annotations.Type;
 @Table(name="tb_alunos")
 public class Aluno{
 	@Column(unique=true, nullable=false)
+	private String matricula;
+	@Column(unique=true, nullable=false)
 	private String nome;
 	private String senha;
 	private String endereco;
 	private final Autorizacao permissao = Autorizacao.ALUNO;
-	private String matricula;
 	@Id
 	private long id;
 	@Column(updatable=false, nullable=false, columnDefinition="VARCHAR(36)")

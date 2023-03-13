@@ -19,6 +19,7 @@ public class Disciplina {
 	@Column(updatable=false, nullable=false, columnDefinition="VARCHAR(36)")
 	@Type(type="uuid-char")
 	private UUID uuid;
+	@Column(unique=true, nullable=false)
 	private String codigo;
 	private String nome;
 	public long getId() {
