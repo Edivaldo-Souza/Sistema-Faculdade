@@ -52,7 +52,6 @@ public class DiretorService implements ServiceInterface<Diretor>{
 		
 		Diretor dir = repository.findByUuid(obj.getUuid());
 		obj.setId(dir.getId());
-		obj.setUuid(dados.getUuid());
 		
 		Usuario user = repositoryUser.findById(obj.getId());
 		user.setNome(obj.getNome());
@@ -65,8 +64,18 @@ public class DiretorService implements ServiceInterface<Diretor>{
 
 	@Override
 	public Diretor updatePatch(Diretor obj) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Diretor dir = repository.findByUuid(obj.getUuid());
+		obj.setId(dir.getId());
+		obj.setUuid(dados.getUuid());
+		
+		Usuario user = repositoryUser.findById(obj.getId());
+		user.setNome(obj.getNome());
+		user.setSenha(obj.getSenha());
+		user.setPermissao(obj.getPermissao());
+		repositoryUser.save(user);
+		
+		return repository.save(obj);
 	}
 
 	@Override
