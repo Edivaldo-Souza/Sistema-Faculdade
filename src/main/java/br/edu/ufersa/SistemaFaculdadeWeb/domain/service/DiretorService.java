@@ -52,6 +52,7 @@ public class DiretorService implements ServiceInterface<Diretor>{
 		
 		Diretor dir = repository.findByUuid(obj.getUuid());
 		obj.setId(dir.getId());
+		obj.setUuid(dados.getUuid());
 		
 		Usuario user = repositoryUser.findById(obj.getId());
 		user.setNome(obj.getNome());
