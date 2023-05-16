@@ -25,6 +25,11 @@ public class DisciplinaService implements ServiceInterface<Disciplina>{
 		Disciplina disc = rep.findByUuid(id);
 		return disc;
 	}
+	
+	public Disciplina getByCodigo(String cod) {
+		Disciplina disc = rep.findByCodigo(cod);
+		return disc;
+	}
 
 	@Override
 	public Disciplina create(Disciplina obj) {

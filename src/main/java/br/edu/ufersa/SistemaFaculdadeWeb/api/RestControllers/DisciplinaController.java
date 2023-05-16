@@ -53,6 +53,16 @@ public class DisciplinaController {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
+	@GetMapping("/codigo/{cod}")
+	public List<DisciplinaDTO> getByCodigo(@PathVariable String cod){
+		List<DisciplinaDTO> disciplinas = new ArrayList<DisciplinaDTO>();
+		DisciplinaDTO d = mapper.map(service.getByCodigo(cod),DisciplinaDTO.class);
+		if(d != null) {
+			disciplinas.add(d);
+		}
+		return disciplinas;
+	}
+	
 	@PostMapping
 	public ResponseEntity<DisciplinaDTO> adicionar(@Valid @RequestBody CriarDisciplinaDTO dto){
 		Disciplina d = service.create(mapper.map(dto, Disciplina.class));

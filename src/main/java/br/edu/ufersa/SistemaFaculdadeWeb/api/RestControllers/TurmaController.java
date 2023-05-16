@@ -53,6 +53,16 @@ public class TurmaController {
 		else return ResponseEntity.notFound().build();
 	}
 	
+	@GetMapping("/codigo/{disc_cod}")
+	public List<TurmaDTO> getByCodigo(@PathVariable String disc_cod){
+		List<TurmaDTO> turmas = new ArrayList<TurmaDTO>();
+		for(Turma dto: service.getByCodigo(disc_cod)) {
+			turmas.add(mapper.map(dto, TurmaDTO.class));
+		}
+		
+		return turmas;
+	}
+	
 	@PostMapping
 	public ResponseEntity<TurmaDTO> post(@Valid @RequestBody CriarTurmaDTO dto){
 		Turma Turma = service.create(mapper.map(dto, Turma.class));

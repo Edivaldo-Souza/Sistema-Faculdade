@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -43,20 +44,30 @@ public class AlunoController {
 		return alunos;
 	}
 	
-	@GetMapping("/{id}")
+	/*@GetMapping("/{id}")
 	public ResponseEntity<AlunoDTO> getAt(@PathVariable UUID id){
 		AlunoDTO dto = mapper.map(service.getAt(id), AlunoDTO.class);
 		if(dto!=null) {
 			return new ResponseEntity<>(dto,HttpStatus.OK);
 		}
 		else return ResponseEntity.notFound().build();
+	}*/
+	
+	@GetMapping("/{nome}")
+	public List<AlunoDTO> getByNome(@PathVariable String nome){
+		List<AlunoDTO> lista = new ArrayList<AlunoDTO>();
+		AlunoDTO dto = mapper.map(service.getByNome(nome), AlunoDTO.class);
+		if(dto!=null) {
+			lista.add(dto);
+		}
+		return lista;
 	}
 	
 	@PostMapping
 	public ResponseEntity<AlunoDTO> post(@Valid @RequestBody CriarAlunoDTO dto){
-		Aluno aluno = service.create(mapper.map(dto, Aluno.class));
+		Aluno aluno = service.create( mapper.map(dto, Aluno.class));
 		if(aluno!=null) {
-			AlunoDTO dto2 = mapper.map(aluno, AlunoDTO.class);
+			AlunoDTO dto2 = mapper.map(aluno, AlunoDTO.class );
 			return new ResponseEntity<>(dto2,HttpStatus.CREATED);
 		}
 		else return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);

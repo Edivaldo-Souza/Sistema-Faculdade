@@ -43,6 +43,26 @@ public class ProfessorController {
 		return profs;
 	}
 	
+	@GetMapping("/cpf/{cpf}")
+	public List<ProfessorDTO> getByCpf(@PathVariable String cpf){
+		List<ProfessorDTO> profs = new ArrayList<ProfessorDTO>();
+		ProfessorDTO dto = mapper.map(service.getByCpf(cpf),ProfessorDTO.class);
+		if (dto!=null) {
+			profs.add(mapper.map(dto, ProfessorDTO.class));
+		}
+		return profs;
+	}
+	
+	@GetMapping("/nome/{nome}")
+	public List<ProfessorDTO> getByNome(@PathVariable String nome){
+		List<ProfessorDTO> profs = new ArrayList<ProfessorDTO>();
+		ProfessorDTO dto = mapper.map(service.getByNome(nome),ProfessorDTO.class);
+		if (dto!=null) {
+			profs.add(mapper.map(dto, ProfessorDTO.class));
+		}
+		return profs;
+	}
+	
 	@GetMapping("/{uuid}")
 	public ResponseEntity<ProfessorDTO> getAt(@PathVariable UUID uuid){
 		Professor p = service.getAt(uuid);
@@ -52,6 +72,8 @@ public class ProfessorController {
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
+	
+	
 	
 	@PostMapping
 	public ResponseEntity<ProfessorDTO> adicionar(@Valid @RequestBody CriarProfessorDTO dto){

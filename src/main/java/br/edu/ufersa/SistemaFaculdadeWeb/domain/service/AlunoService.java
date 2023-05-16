@@ -29,6 +29,10 @@ public class AlunoService implements ServiceInterface<Aluno>{
 	public Aluno getAt(UUID id) {
 		return repository.findByUuid(id);
 	}
+	
+	public Aluno getByNome(String n) {
+		return repository.findByNome(n);
+	}
 
 	@Override
 	public Aluno create(Aluno obj) {

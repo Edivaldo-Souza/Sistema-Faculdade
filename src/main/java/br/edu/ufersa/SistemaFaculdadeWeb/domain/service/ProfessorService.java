@@ -27,6 +27,16 @@ public class ProfessorService implements ServiceInterface<Professor>{
 		Professor prof = rep.findByUuid(id);
 		return prof;
 	}
+	
+	public Professor getByCpf(String cpf) {
+		Professor prof = rep.findByCpf(cpf);
+		return prof;
+	}
+	
+	public Professor getByNome(String nome) {
+		Professor prof = rep.findByNome(nome);
+		return prof;
+	}
 
 	public Professor create(Professor obj) {
 		

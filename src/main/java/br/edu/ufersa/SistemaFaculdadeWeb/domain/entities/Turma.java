@@ -22,9 +22,21 @@ public class Turma {
 	private String local;
 	private String horario;
 	private boolean status;
-	private String disc_cod;
-	private String prof_cpf;
+	private String discCod;
+	private String profCpf;
 	
+	public String getDiscCod() {
+		return discCod;
+	}
+	public void setDiscCod(String discCod) {
+		this.discCod = discCod;
+	}
+	public String getProfCpf() {
+		return profCpf;
+	}
+	public void setProfCpf(String profCpf) {
+		this.profCpf = profCpf;
+	}
 	public long getId() {
 		return id;
 	}
@@ -55,18 +67,7 @@ public class Turma {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	public String getDisc_cod() {
-		return disc_cod;
-	}
-	public void setDisc_cod(String disc_cod) {
-		this.disc_cod = disc_cod;
-	}
-	public String getProf_cpf() {
-		return prof_cpf;
-	}
-	public void setProf_cpf(String prof_cpf) {
-		this.prof_cpf = prof_cpf;
-	}
+	
 
 
 	
