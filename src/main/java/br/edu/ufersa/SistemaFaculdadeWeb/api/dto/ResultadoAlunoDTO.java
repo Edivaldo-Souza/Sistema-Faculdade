@@ -6,9 +6,9 @@ import br.edu.ufersa.SistemaFaculdadeWeb.domain.entities.SituacaoAluno;
 
 public class ResultadoAlunoDTO {
 	private UUID uuid;
-	private UUID turma_id;
+	private UUID turma;
 	private String matricula;
-	private String disc_cod;
+	private String discCod;
 	private float frequencia;
 	private double nota1;
 	private double nota2;
@@ -27,16 +27,17 @@ public class ResultadoAlunoDTO {
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-	public String getDisc_cod() {
-		return disc_cod;
+	
+	public String getDiscCod() {
+		return discCod;
 	}
-	public void setDisc_cod(String disc_cod) {
-		this.disc_cod = disc_cod;
+	public void setDiscCod(String discCod) {
+		this.discCod = discCod;
 	}
 	public float getFrequencia() {
 		return frequencia;
 	}
-	public void setFrequencia(int frequencia) {
+	public void setFrequencia(float frequencia) {
 		this.frequencia = frequencia;
 	}
 	public double getNota1() {
@@ -69,10 +70,11 @@ public class ResultadoAlunoDTO {
 	public void setStatus(SituacaoAluno status) {
 		this.status = status;
 	}
-	public UUID getTurma_id() {
-		return turma_id;
+	public UUID getTurma() {
+		return turma;
 	}
-	public void setTurma_id(UUID turma_id) {
-		this.turma_id = turma_id;
+	public void setTurma(UUID turma) {
+		this.turma = turma;
 	}
+	
 }

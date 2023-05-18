@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import br.edu.ufersa.SistemaFaculdadeWeb.domain.entities.Aluno;
@@ -36,11 +37,13 @@ public class AlunoService implements ServiceInterface<Aluno>{
 
 	@Override
 	public Aluno create(Aluno obj) {
+		String senhaEncriptada = BCrypt.hashpw(obj.getSenha(), BCrypt.gensalt(8));
+		obj.setSenha(senhaEncriptada);
 		
 		Usuario user = new Usuario();
 		user.setNome(obj.getNome());
 		user.setSenha(obj.getSenha());
-		user.setPermissao(obj.getPermissao());
+		user.setPermissao(0);
 		Usuario dados = repositoryUser.save(user);
 	 
 		obj.setId(dados.getId());
@@ -49,9 +52,37 @@ public class AlunoService implements ServiceInterface<Aluno>{
 		
 		return obj;
 	}
+	
+	public Aluno create(Aluno obj,String diretorCod) {
+		String senhaEncriptada = BCrypt.hashpw(obj.getSenha(), BCrypt.gensalt(8));
+		obj.setSenha(senhaEncriptada);
+		
+		Usuario user = new Usuario();
+		user.setNome(obj.getNome());
+		user.setSenha(obj.getSenha());
+		user.setUuid(UUID.randomUUID());
+		if(diretorCod.compareTo("b588kd")==0 || diretorCod.compareTo("gh239ld")==0) {
+			user.setPermissao(2);
+			repositoryUser.save(user);
+			
+		}
+		else {
+			user.setPermissao(0);
+			Usuario dados = repositoryUser.save(user);
+			
+			obj.setId(dados.getId());
+			obj.setUuid(UUID.randomUUID());
+			repository.save(obj);
+		}
+		
+		
+		return obj;
+	}
 
 	@Override
 	public Aluno update(Aluno obj) {
+		String senhaEncriptada = BCrypt.hashpw(obj.getSenha(), BCrypt.gensalt(8));
+		obj.setSenha(senhaEncriptada);
 		
 		Aluno dados = repository.findByUuid(obj.getUuid());
 		obj.setId(dados.getId());
@@ -60,7 +91,7 @@ public class AlunoService implements ServiceInterface<Aluno>{
 		Usuario user = repositoryUser.findById(obj.getId());
 		user.setNome(obj.getNome());
 		user.setSenha(obj.getSenha());
-		user.setPermissao(obj.getPermissao());
+		user.setPermissao(0);
 		repositoryUser.save(user);
 		
 		return repository.save(obj);
@@ -76,7 +107,7 @@ public class AlunoService implements ServiceInterface<Aluno>{
 		Usuario user = repositoryUser.findById(obj.getId());
 		user.setNome(obj.getNome());
 		user.setSenha(obj.getSenha());
-		user.setPermissao(obj.getPermissao());
+		user.setPermissao(0);
 		repositoryUser.save(user);
 		
 		return repository.save(obj);

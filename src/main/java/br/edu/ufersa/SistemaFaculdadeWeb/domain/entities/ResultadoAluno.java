@@ -22,10 +22,10 @@ public class ResultadoAluno {
 	private UUID uuid;
 	@Column(updatable=false, nullable=false)
 	private String matricula;
-	private String disc_cod;
+	private String discCod;
 	@Column(updatable=false, nullable=false, columnDefinition="VARCHAR(36)")
 	@Type(type="uuid-char")
-	private UUID turma_id;
+	private UUID turma;
 	private float frequencia;
 	private double nota1;
 	private double nota2;
@@ -33,25 +33,26 @@ public class ResultadoAluno {
 	private double media;
 	private SituacaoAluno status;
 	
+	
+	public String getDiscCod() {
+		return discCod;
+	}
+	public void setDiscCod(String discCod) {
+		this.discCod = discCod;
+	}
+	
+	public UUID getTurma() {
+		return turma;
+	}
+	public void setTurma(UUID turma) {
+		this.turma = turma;
+	}
 	public String getMatricula() {
 		return matricula;
 	}
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-	public String getDisc_cod() {
-		return disc_cod;
-	}
-	public void setDisc_cod(String disc_cod) {
-		this.disc_cod = disc_cod;
-	}
-	public UUID getTurma_id() {
-		return turma_id;
-	}
-	public void setTurma_id(UUID turma_id) {
-		this.turma_id = turma_id;
-	}
-	
 	public double getNota1() {
 		return nota1;
 	}

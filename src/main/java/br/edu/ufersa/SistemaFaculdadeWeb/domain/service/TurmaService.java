@@ -29,6 +29,10 @@ public class TurmaService implements ServiceInterface<Turma>{
 	public List<Turma> getByCodigo(String cod) {
 		return repository.findByDiscCod(cod);
 	}
+	
+	public List<Turma> getByCpf(String cpf){
+		return repository.findByProfCpf(cpf);
+	}
 
 	@Override
 	public Turma create(Turma obj) {

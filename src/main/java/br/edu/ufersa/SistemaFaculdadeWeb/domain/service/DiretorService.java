@@ -36,7 +36,7 @@ public class DiretorService implements ServiceInterface<Diretor>{
 		Usuario user = new Usuario();
 		user.setNome(obj.getNome());
 		user.setSenha(obj.getSenha());
-		user.setPermissao(obj.getPermissao());
+		user.setPermissao(2);
 		Usuario dados = repositoryUser.save(user);
 		
 		obj.setId(dados.getId());
@@ -55,7 +55,7 @@ public class DiretorService implements ServiceInterface<Diretor>{
 		Usuario user = repositoryUser.findById(obj.getId());
 		user.setNome(obj.getNome());
 		user.setSenha(obj.getSenha());
-		user.setPermissao(obj.getPermissao());
+		user.setPermissao(2);
 		repositoryUser.save(user);
 		
 		return repository.save(obj);
@@ -71,7 +71,7 @@ public class DiretorService implements ServiceInterface<Diretor>{
 		Usuario user = repositoryUser.findById(obj.getId());
 		user.setNome(obj.getNome());
 		user.setSenha(obj.getSenha());
-		user.setPermissao(obj.getPermissao());
+		user.setPermissao(2);
 		repositoryUser.save(user);
 		
 		return repository.save(obj);

@@ -53,6 +53,16 @@ public class TurmaController {
 		else return ResponseEntity.notFound().build();
 	}
 	
+	@GetMapping("/cpf/{cpf}")
+	public List<TurmaDTO> getByCpf(@PathVariable String cpf){
+		List<TurmaDTO> turmas = new ArrayList<TurmaDTO>();
+		for(Turma dto: service.getByCpf(cpf)) {
+			turmas.add(mapper.map(dto, TurmaDTO.class));
+		}
+		
+		return turmas;
+	}
+	
 	@GetMapping("/codigo/{disc_cod}")
 	public List<TurmaDTO> getByCodigo(@PathVariable String disc_cod){
 		List<TurmaDTO> turmas = new ArrayList<TurmaDTO>();

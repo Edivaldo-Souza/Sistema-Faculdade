@@ -10,7 +10,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -65,7 +64,7 @@ public class AlunoController {
 	
 	@PostMapping
 	public ResponseEntity<AlunoDTO> post(@Valid @RequestBody CriarAlunoDTO dto){
-		Aluno aluno = service.create( mapper.map(dto, Aluno.class));
+		Aluno aluno = service.create( mapper.map(dto, Aluno.class),dto.getDiretorCod());
 		if(aluno!=null) {
 			AlunoDTO dto2 = mapper.map(aluno, AlunoDTO.class );
 			return new ResponseEntity<>(dto2,HttpStatus.CREATED);

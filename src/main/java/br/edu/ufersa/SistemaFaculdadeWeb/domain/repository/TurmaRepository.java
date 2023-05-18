@@ -10,5 +10,5 @@ import br.edu.ufersa.SistemaFaculdadeWeb.domain.entities.Turma;
 public interface TurmaRepository extends JpaRepository<Turma, Long>{
 	Turma findByUuid(UUID id);
 	List<Turma> findByDiscCod(String discCod);
-	Turma findByProfCpf(String profCpf);
+	List<Turma> findByProfCpf(String profCpf);
 }

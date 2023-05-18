@@ -9,7 +9,7 @@ public class CriarTurmaDTO {
 	@NotBlank(message="O horario não deve estar vazio")
 	private String horario;
 	@NotBlank(message="O id da disciplina não deve estar vazio")
-	private String disCod;
+	private String discCod;
 	
 	private String profCpf;
 	public String getLocal() {
@@ -24,11 +24,11 @@ public class CriarTurmaDTO {
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
-	public String getDisCod() {
-		return disCod;
+	public String getDiscCod() {
+		return discCod;
 	}
-	public void setDisCod(String disCod) {
-		this.disCod = disCod;
+	public void setDiscCod(String disCod) {
+		this.discCod = disCod;
 	}
 	public String getProfCpf() {
 		return profCpf;

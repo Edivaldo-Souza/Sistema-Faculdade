@@ -11,6 +11,13 @@ public class CriarAlunoDTO {
 	@NotBlank(message="O endereco não deve estar vazio")
 	private String endereco;
 	private String matricula;
+	private String diretorCod;
+	public String getDiretorCod() {
+		return diretorCod;
+	}
+	public void setDiretorCod(String diretorCod) {
+		this.diretorCod = diretorCod;
+	}
 	public String getNome() {
 		return nome;
 	}

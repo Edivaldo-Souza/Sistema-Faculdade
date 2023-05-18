@@ -39,6 +39,7 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter{
 	protected void successfulAuthentication(HttpServletRequest req,HttpServletResponse res, FilterChain chain, Authentication auth)
 	throws IOException, ServletException{
 		AuthenticationService.addToken(res,auth.getName());
+		res.setHeader("Access-Control-Expose-Headers", "Authorization");
 	}
 	
 }

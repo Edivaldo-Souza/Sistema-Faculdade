@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import br.edu.ufersa.SistemaFaculdadeWeb.domain.entities.Professor;
@@ -39,11 +40,13 @@ public class ProfessorService implements ServiceInterface<Professor>{
 	}
 
 	public Professor create(Professor obj) {
+		String senhaEncriptada = BCrypt.hashpw(obj.getSenha(), BCrypt.gensalt(8));
+		obj.setSenha(senhaEncriptada);
 		
 		Usuario user = new Usuario();
 		user.setNome(obj.getNome());
 		user.setSenha(obj.getSenha());
-		user.setPermissao(obj.getPermissao());
+		user.setPermissao(1);
 		Usuario dados = repositoryUser.save(user);
 		
 		obj.setId(dados.getId());
@@ -65,6 +68,9 @@ public class ProfessorService implements ServiceInterface<Professor>{
 	}
 
 	public Professor update(Professor obj) {
+		String senhaEncriptada = BCrypt.hashpw(obj.getSenha(), BCrypt.gensalt(8));
+		obj.setSenha(senhaEncriptada);
+		
 		Professor dados = rep.findByUuid(obj.getUuid());
 		obj.setId(dados.getId());
 		obj.setCpf(dados.getCpf());
@@ -72,7 +78,7 @@ public class ProfessorService implements ServiceInterface<Professor>{
 		Usuario user = repositoryUser.findById(obj.getId());
 		user.setNome(obj.getNome());
 		user.setSenha(obj.getSenha());
-		user.setPermissao(obj.getPermissao());
+		user.setPermissao(1);
 		repositoryUser.save(user);
 		
 		return rep.save(obj);
@@ -87,7 +93,7 @@ public class ProfessorService implements ServiceInterface<Professor>{
 		Usuario user = repositoryUser.findById(obj.getId());
 		user.setNome(obj.getNome());
 		user.setSenha(obj.getSenha());
-		user.setPermissao(obj.getPermissao());
+		user.setPermissao(1);
 		repositoryUser.save(user);
 		
 		return rep.save(obj);

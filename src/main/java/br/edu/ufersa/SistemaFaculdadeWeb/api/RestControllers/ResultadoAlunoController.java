@@ -53,6 +53,24 @@ public class ResultadoAlunoController {
 		else return ResponseEntity.notFound().build();
 	}
 	
+	@GetMapping("/matricula/{mat}")
+	public List<ResultadoAlunoDTO> getByMatricula(@PathVariable String mat){
+		List<ResultadoAlunoDTO> results = new ArrayList<ResultadoAlunoDTO>();
+		for(ResultadoAluno a: service.getByMatricula(mat)) {
+			results.add(mapper.map(a, ResultadoAlunoDTO.class));
+		}
+		return results;
+	}
+	
+	@GetMapping("/turma/{turma}")
+	public List<ResultadoAlunoDTO> getByMatricula(@PathVariable UUID turma){
+		List<ResultadoAlunoDTO> results = new ArrayList<ResultadoAlunoDTO>();
+		for(ResultadoAluno a: service.getByTurma(turma)) {
+			results.add(mapper.map(a, ResultadoAlunoDTO.class));
+		}
+		return results;
+	}
+	
 	@PostMapping
 	public ResponseEntity<ResultadoAlunoDTO> post(@Valid @RequestBody CriarResultadoAlunoDTO dto){
 		ResultadoAluno result = service.create(mapper.map(dto, ResultadoAluno.class));

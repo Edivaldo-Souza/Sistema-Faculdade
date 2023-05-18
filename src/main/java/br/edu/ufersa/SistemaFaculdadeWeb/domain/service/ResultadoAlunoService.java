@@ -21,6 +21,14 @@ public class ResultadoAlunoService implements ServiceInterface<ResultadoAluno>{
 		List<ResultadoAluno> results = repository.findAll(); 
 		return results;
 	}
+	
+	public List<ResultadoAluno> getByMatricula(String mat){
+		return repository.findByMatricula(mat);
+	}
+	
+	public List<ResultadoAluno> getByTurma(UUID turma){
+		return repository.findByTurma(turma);
+	}
 
 	@Override
 	public ResultadoAluno getAt(UUID id) {
@@ -44,17 +52,14 @@ public class ResultadoAlunoService implements ServiceInterface<ResultadoAluno>{
 	public ResultadoAluno update(ResultadoAluno obj) {
 		ResultadoAluno dados = repository.findByUuid(obj.getUuid());
 		obj.setId(dados.getId());
-		obj.setDisc_cod(dados.getDisc_cod());
+		obj.setDiscCod(dados.getDiscCod());
 		obj.setMatricula(dados.getMatricula());
 		return repository.save(obj);
 	}
 
 	@Override
 	public ResultadoAluno updatePatch(ResultadoAluno obj) {
-		ResultadoAluno dados = repository.findByMatricula(obj.getMatricula());
-		obj.setId(dados.getId());
-		obj.setDisc_cod(dados.getDisc_cod());
-		return repository.save(obj);
+		return null;
 	}
 
 	@Override
